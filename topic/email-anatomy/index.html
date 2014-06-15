@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Infobits | Anatomy of an Email Message</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-accessibility.css">
+    <link rel="stylesheet" href="/css/infobits.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="container-fluid">
+    <nav class="col-md-2">
+        <img src="/img/iblogo.png" class="center-block" height="128" width="128" alt="">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="/">Infobits</a></li>
+            <li class="active"><a href="/topic/">Topics</a></li>
+            <li><a href="/license.html">License</a></li>
+            <li><a href="/kjw.html">Author</a></li>
+        </ul>
+        <footer>
+            <script id='fbvt102'>(function (i) { var f, s = document.getElementById(i); f = document.createElement('iframe'); f.src = '//api.flattr.com/button/view/?uid=justdoglet&url=' + encodeURIComponent(document.URL); f.title = 'Flattr'; f.height = 62; f.width = 55; f.style.borderWidth = 0; s.parentNode.insertBefore(f, s); })('fbvt102');</script>
+        </footer>
+    </nav>
+    <header class="page-header">
+        <h1>Anatomy of an Email Message</h1>
+    </header>
+    <main class="col-md-10">
+        <article>
+            <p>There's more to that email message than there appears!</p>
+
+            <p>Email as we know it has been around since 1981 [see <a href="references.html#rfc788">RFC788</a>], though there were similar systems used for more than a decade previous to that. Everything in most email messages is text, and this makes it easy to see the various sections that make up a message.</p>
+
+            <p>The format of an email message is standardized, so software that handles email messages has to conform to the standard in the messages it sends and accept messages in the standard format.</p>
+
+            <h2 id="the-header">The header</h2>
+
+            <p>The header is the first part of the mail message and the one you're least likely to see presented exactly as it's received. The header of an email message is made up of lines of text with each line having a specific purpose. We all know about the From, To, and Subject lines; those are important, but definitely not all there is to the header.</p>
+
+            <p>Most header lines are usually not shown by an email client. Most of the time you don't need to know the information they contain. The time and date a message was sent, a unique message identifier, and a list of the mail servers that the message was routed between are all among the many pieces of information found in the header.</p>
+
+            <p>So why keep the bulk of the header if it's not usually shown to the user? The information contained in the header is helpful for determining whether or not an email message is likely to be spam, and it's also critical when your mail administrator is tracking down problems. So when your mail administrator asks you to forward a message "with all the headers", that's why.</p>
+
+            <h2 id="the-body">The body</h2>
+
+            <p>The body of the email message is the part that most people are interested in. It contains the text of the message (if there is any!) and whatever attachments accompany the message. If you send an email to grandma with a note about your kid's birthday and a copy of the blowing-out-the-candles picture, both the note and the picture are part of the body of the message.</p>
+
+            <p>Most of the time the body will be divided into several parts. To manage the parts your mail program uses MIME [see <a href="references.html#mime-rfcs">MIME RFCs</a>], a standard way to delimit sections in a document, specify what's in them, specify the format it's stored in, and more. When grandma reads your note and sees the picture, that's thanks to MIME. Without it, she could read your note but your picture would appear to be a jumble of letters, numbers, and punctuation because your mail program wouldn't know it's supposed to be a picture or what format the picture data is stored in.</p>
+
+            <p>Though the MIME entries look confusing at first, there are really only a few important bits:</p>
+
+            <ul>
+                <li>the boundary, a line of unique characters that mark the beginning and end of a section</li>
+                <li>the content type, which specifies what the content of the section represents (for example, a picture or a Word document)</li>
+                <li>the name of the encoding system used to make the content safe to send through email</li>
+                <li>possibly, a filename that will be suggested if you try to save the attachment</li>
+            </ul>
+
+            <h3>Attachments</h3>
+
+            <p>You'll often hear people talk about email attachments. Attachments are just sections of the body, so far as your mail program is concerned; though they may be parts of the message body that your email program can't display on its own and needs you to save it and view it in another program (such as a PDF in Adobe Reader). For example, the MIME entry for an image you took with your digital camera and attached to the message would contain the boundary, a content type specification of <code>image/jpeg</code>, the name of the encoding scheme used on the attachment (such as <code>Base64</code>), and a suggested filename that matches whatever the filename was on your hard drive (such as <code>mydog.jpg</code>).</p>
+
+            <p>If you were an email program and wanted to save or try to display the attachment you would find the boundary of the section and memorize everything between the boundary and its matching end. Then you'd look at the content type and decide whether or not you knew how to display that content on your own or whether you needed to save it to the hard disk for another program to view. Then you'd decode the content between the boundaries using the encoding method specified. If you knew how to display the content on your own you'd show it to the user, and if not you would pop up a "Save as..." dialog with the suggested filename filled out to make it easy for the user to save the file.</p>
+
+            <h2 id="further-reading">But wait! There's more.</h2>
+
+            <p>Of course there's more to some email messages than that, but the info you've got now will explain 90% of the things about 90% of the time for most folks. If you need more information on email messages there are lots of places to get more information. You can check the <a href="references.html">references</a> page to read some of the documentation I referred to when writing this article. A few more pages that may be informative are:</p>
+
+            <ul>
+                <li><a href="http://email.about.com/od/emailbehindthescenes/">Email: Behind the Scenes</a> at <a href="http://www.about.com/">About.com</a> has several articles that give more detail than what I've written above</li>
+                <li>The <a href="http://en.wikipedia.org/wiki/Email">Email article</a> at <a href="http://wikipedia.org/">Wikipedia</a> has a lot of information as well</li>
+                <li><a href="http://tools.ietf.org/html/rfc5322">RFC 5322</a>, which is the specification that people who make email programs are expected to conform to (for serious propellerheads only!)</li>
+            </ul>
+        </article>
+    </main>
+
+    <footer>
+        <p><small>&copy; 2014 by Kevin J. Woolley</small></p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-accessibility.min.js"></script>
+</body>
+</html>
