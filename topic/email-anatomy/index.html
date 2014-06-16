@@ -17,12 +17,12 @@
 </head>
 <body class="container-fluid">
     <nav class="col-md-2">
-        <img src="/img/iblogo.png" class="center-block" height="128" width="128" alt="">
+        <a href="/"><img src="/img/iblogo.png" class="center-block" height="128" width="128" alt=""></a>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="/">Infobits</a></li>
-            <li class="active"><a href="/topic/">Topics</a></li>
-            <li><a href="/license.html">License</a></li>
-            <li><a href="/kjw.html">Author</a></li>
+            <li><a href="/" class="no-ul">Infobits</a></li>
+            <li class="active"><a href="/topic/" class="no-ul">Topics</a></li>
+            <li><a href="/license.html" class="no-ul">License</a></li>
+            <li><a href="/about.html" class="no-ul">About</a></li>
         </ul>
         <footer>
             <script id='fbvt102'>(function (i) { var f, s = document.getElementById(i); f = document.createElement('iframe'); f.src = '//api.flattr.com/button/view/?uid=justdoglet&url=' + encodeURIComponent(document.URL); f.title = 'Flattr'; f.height = 62; f.width = 55; f.style.borderWidth = 0; s.parentNode.insertBefore(f, s); })('fbvt102');</script>
@@ -35,7 +35,7 @@
         <article>
             <p>There's more to that email message than there appears!</p>
 
-            <p>Email as we know it has been around since 1981 [see <a href="references.html#rfc788">RFC788</a>], though there were similar systems used for more than a decade previous to that. Everything in most email messages is text, and this makes it easy to see the various sections that make up a message.</p>
+            <p>Email as we know it has been around since 1981 [see <a href="references.html#rfc788">RFC788</a>], though there were similar systems used for more than a decade previous to that. Everything in most email messages is text, and this makes it easy to see the various sections that make up a message. You can see the various sections in this <a href="sample-email.html">sample email message</a>.</p>
 
             <p>The format of an email message is standardized, so software that handles email messages has to conform to the standard in the messages it sends and accept messages in the standard format.</p>
 
@@ -51,7 +51,7 @@
 
             <p>The body of the email message is the part that most people are interested in. It contains the text of the message (if there is any!) and whatever attachments accompany the message. If you send an email to grandma with a note about your kid's birthday and a copy of the blowing-out-the-candles picture, both the note and the picture are part of the body of the message.</p>
 
-            <p>Most of the time the body will be divided into several parts. To manage the parts your mail program uses MIME [see <a href="references.html#mime-rfcs">MIME RFCs</a>], a standard way to delimit sections in a document, specify what's in them, specify the format it's stored in, and more. When grandma reads your note and sees the picture, that's thanks to MIME. Without it, she could read your note but your picture would appear to be a jumble of letters, numbers, and punctuation because your mail program wouldn't know it's supposed to be a picture or what format the picture data is stored in.</p>
+            <p id="mime">Most of the time the body will be divided into several parts. To manage the parts your mail program uses MIME [see <a href="references.html#mime-rfcs">MIME RFCs</a>], a standard way to delimit sections in a document, specify what's in them, specify the format it's stored in, and more. When grandma reads your note and sees the picture, that's thanks to MIME. Without it, she could read your note but your picture would appear to be a jumble of letters, numbers, and punctuation because your mail program wouldn't know it's supposed to be a picture or what format the picture data is stored in.</p>
 
             <p>Though the MIME entries look confusing at first, there are really only a few important bits:</p>
 
@@ -64,7 +64,7 @@
 
             <h3>Attachments</h3>
 
-            <p>You'll often hear people talk about email attachments. Attachments are just sections of the body, so far as your mail program is concerned; though they may be parts of the message body that your email program can't display on its own and needs you to save it and view it in another program (such as a PDF in Adobe Reader). For example, the MIME entry for an image you took with your digital camera and attached to the message would contain the boundary, a content type specification of <code>image/jpeg</code>, the name of the encoding scheme used on the attachment (such as <code>Base64</code>), and a suggested filename that matches whatever the filename was on your hard drive (such as <code>mydog.jpg</code>).</p>
+            <p id="base64">You'll often hear people talk about email attachments. Attachments are just sections of the body, so far as your mail program is concerned; though they may be parts of the message body that your email program can't display on its own and needs you to save it and view it in another program (such as a PDF in Adobe Reader). For example, the MIME entry for an image you took with your digital camera and attached to the message would contain the boundary, a content type specification of <code>image/jpeg</code>, the name of the encoding scheme used on the attachment (such as <code>Base64</code>), and a suggested filename that matches whatever the filename was on your hard drive (such as <code>mydog.jpg</code>).</p>
 
             <p>If you were an email program and wanted to save or try to display the attachment you would find the boundary of the section and memorize everything between the boundary and its matching end. Then you'd look at the content type and decide whether or not you knew how to display that content on your own or whether you needed to save it to the hard disk for another program to view. Then you'd decode the content between the boundaries using the encoding method specified. If you knew how to display the content on your own you'd show it to the user, and if not you would pop up a "Save as..." dialog with the suggested filename filled out to make it easy for the user to save the file.</p>
 
